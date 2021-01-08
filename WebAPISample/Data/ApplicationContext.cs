@@ -25,7 +25,8 @@ namespace WebAPISample.Data
                         Title = "Lion King",
                         Director = "Jon Favreau",
                         Genre = "Animation",
-                    });
+                        Image = null,
+                    }); 
         }
 
         public DbSet<Movie> Movies { get; set; }

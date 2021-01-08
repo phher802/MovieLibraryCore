@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAPISample.Models
 {
@@ -12,5 +15,7 @@ namespace WebAPISample.Models
         public string Title { get; set; }
         public string Director { get; set; }
         public string Genre { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
     }
 }
