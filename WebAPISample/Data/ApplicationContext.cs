@@ -11,11 +11,21 @@ namespace WebAPISample.Data
 
         }
 
+   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             // Seed data - needs migration
-           
+
+            modelBuilder.Entity<Movie>()
+                .HasData(
+                    new Movie
+                    {
+                        MovieId = 1,
+                        Title = "Lion King",
+                        Director = "Jon Favreau",
+                        Genre = "Animation",
+                    });
         }
 
         public DbSet<Movie> Movies { get; set; }
