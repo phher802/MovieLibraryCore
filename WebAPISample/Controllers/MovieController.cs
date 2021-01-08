@@ -48,6 +48,11 @@ namespace WebAPISample.Controllers
         public IActionResult Put([FromBody] Movie movie)
         {
             // Update movie in db logic
+            var movieInDb = _context.Movies.FirstOrDefault(m => m.MovieId == movie.MovieId);
+            movieInDb = movie;
+            _context.Update(movieInDb);
+            _context.SaveChanges();
+
             return Ok();
         }
 
@@ -56,6 +61,10 @@ namespace WebAPISample.Controllers
         public IActionResult Delete(int id)
         {
             // Delete movie from db logic
+            var movie = _context.Movies.FirstOrDefault(c => c.MovieId == id);
+            _context.Remove(movie);
+            _context.SaveChanges();
+
             return Ok();
         }
     }
