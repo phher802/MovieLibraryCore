@@ -34,7 +34,7 @@ namespace WebAPISample.Controllers
         {
             // Retrieve movie by id from db logic
 
-            var movie = _context.Movies.Where(m => m.MovieId == id).ToList();
+            var movie = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
 
             // return Ok(movie);
             return Ok(movie);
@@ -42,7 +42,7 @@ namespace WebAPISample.Controllers
 
         // POST api/movie
         [HttpPost]
-        public IActionResult Post([FromBody]Movie value)
+        public IActionResult Post([FromBody] Movie value)
         {
 
             // Create movie in db logic
@@ -51,25 +51,43 @@ namespace WebAPISample.Controllers
             return Ok();
         }
 
-        // PUT api/movie
-        [HttpPut]
-        public IActionResult Put([FromBody] Movie movie)
-        {
-            // Update movie in db logic
-            var movieInDb = _context.Movies.FirstOrDefault(m => m.MovieId == movie.MovieId);
-            movieInDb = movie;
-            _context.Update(movieInDb);
-            _context.SaveChanges();
+        //PUT api/movie
+        //[HttpPut]
+        //public IActionResult Put(int id, [FromBody] Movie movie)
+        //{
+            
+        //    if (!ModelState.IsValid)
+        //        return BadRequest("Not a valid model");
 
-            return Ok();
-        }
+        //    using (var newMovie = new Movie())
+        //    {
+        //        var movieInDb = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
+        //        if (movieInDb != null)
+        //        {
+        //            movieInDb.Title = movie.Title;
+        //            movieInDb.Director = movie.Director;
+        //            movieInDb.Genre = movie.Genre;
+        //            movieInDb.Image = movie.Image;
+
+
+        //            movieInDb.SaveChanges();
+        //        }
+        //        else
+        //        {
+        //            return NotFound();
+        //        }
+
+        //    }
+
+        //    return Ok();
+        //}
 
         // DELETE api/movie/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             // Delete movie from db logic
-            var movie = _context.Movies.FirstOrDefault(c => c.MovieId == id);
+            var movie = _context.Movies.Where(c => c.MovieId == id).FirstOrDefault();
             _context.Remove(movie);
             _context.SaveChanges();
 
