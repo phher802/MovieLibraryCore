@@ -10,16 +10,57 @@
     <pre></pre>
 </div>
 
-<form id="my-form">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="director" placeholder="Director" />
-    <input type="text" name="genre" placeholder="Genre" />
+<div class="section search-section">
+    <p>Search by</p>
+    <select id="search-property" class="text-form">
+        <option>Title</option>
+        <option>Director</option>
+        <option>Genre</option>
+    </select>
+    <input type="text" id="search-field" name="" />
+</div>
 
-    <button type="submit">Submit</button>
-</form>
 
-<table id="movie-table"></table>
+<div>
+    <table id="movie-table"></table>
+</div>
 
+<div class="section">
+    <h6>Are we missing a movie in our library? Use the form below to add a movie.</h6>
+        <details>
+            <summary style="margin-bottom: 20px;">Add a movie here</summary>
+            <form id="my-form" class="text-form">
+                <input type="text" name="title" placeholder="Title" /><br />
+                <input type="text" name="director" placeholder="Director" /><br />
+                <input type="text" name="genre" placeholder="Genre" /><br />
+
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </details>
+</div>
+
+
+<style>
+    html *
+    {
+        font-size: 1em !important;
+        font-family: Arial !important;
+    }   
+    .section{
+        margin-left: 15%;
+    }
+    .text-form>input, .text-form>button, .search-section>input{
+        padding: 7px;
+        text-align: left;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        border-style: normal;
+    }
+    .submit{
+        margin-top: 5px;
+    }
+
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>

@@ -62,15 +62,16 @@ namespace WebAPISample.Controllers
             //    return BadRequest("Not a valid model");
             //}
 
-            var movieInDb = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
+            var movieInDb = _context.Movies.Where(m => m.MovieId == movie.MovieId).SingleOrDefault();
 
             movieInDb.Title = movie.Title;
             movieInDb.Director = movie.Director;
             movieInDb.Genre = movie.Genre;
 
+            // Update movie in db logic
+            _context.Movies.Update(movie);
             _context.SaveChanges();
-    
-
+        
             return Ok();
         }
 
