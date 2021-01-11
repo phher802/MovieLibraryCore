@@ -1,66 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>jQuery AJAX POST Form</title>
+    <title>Movie Library</title>
     <meta charset="utf-8">
 </head>
 <body>
+
+<p id="main-title"><b>Movie Library</b></p>
 
 <div id="response">
     <pre></pre>
 </div>
 
-<div class="section search-section">
-    <p>Search by</p>
-    <select id="search-property" class="text-form">
+<div class="section search-section" >
+    <p style="padding: 7px; display: inline-block;">Search by</p>
+    <select id="search-property" class="text-form" style="display: inline-block;">
         <option>Title</option>
         <option>Director</option>
         <option>Genre</option>
     </select>
-    <input type="text" id="search-field" name="" />
+    <input type="text" id="search-field" />
 </div>
 
 
 <div>
-    <table id="movie-table"></table>
+    <table id="movie-table">
+        <thead>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Image File</th>
+        </thead>
+    </table>
 </div>
 
+
+<h4 class="section">Are we missing a movie in our library? Use the form below to add a movie.</h4>
 <div class="section">
-    <h6>Are we missing a movie in our library? Use the form below to add a movie.</h6>
-        <details>
-            <summary style="margin-bottom: 20px;">Add a movie here</summary>
-            <form id="my-form" class="text-form">
-                <input type="text" name="title" placeholder="Title" /><br />
-                <input type="text" name="director" placeholder="Director" /><br />
-                <input type="text" name="genre" placeholder="Genre" /><br />
+    <details>
+        <summary style="margin-bottom: 20px;">Add a movie here</summary>
+        <form id="my-form" class="text-form">
+            <input type="text" name="title" placeholder="Title" /><br />
+            <input type="text" name="director" placeholder="Director" /><br />
+            <input type="text" name="genre" placeholder="Genre" /><br />
 
-                <button type="submit" class="submit">Submit</button>
-            </form>
-        </details>
+            <button type="submit" class="submit">Submit</button>
+        </form>
+    </details>
 </div>
 
 
-<style>
-    html *
-    {
-        font-size: 1em !important;
-        font-family: Arial !important;
-    }   
-    .section{
-        margin-left: 15%;
-    }
-    .text-form>input, .text-form>button, .search-section>input{
-        padding: 7px;
-        text-align: left;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        border-style: normal;
-    }
-    .submit{
-        margin-top: 5px;
-    }
-
-</style>
+<link rel="stylesheet" href="./style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>
