@@ -6,6 +6,23 @@
             Genre: this["genre"].value
         };
 
+        function getAllMovies(){
+            $.ajax({
+                url: 'https://localhost:44325/api/movie',
+                dataType: 'json',
+                type: 'get',
+                contentType: 'application/json',
+                data: JSON.stringify(dict),
+                success: function(data, textStatus, jQxhr){
+    
+                },
+                error: function(jqxhr, textStatus, errorThrown){
+                    console.log(errorThrown);
+                }
+            })
+        }
+        
+
         $.ajax({
             url: 'https://localhost:44325/api/movie',
             dataType: 'json',
