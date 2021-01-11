@@ -14,13 +14,17 @@
 </div>
 
 <div class="section search-section" >
-    <p style="padding: 7px; display: inline-block;">Search by</p>
-    <select id="search-property" class="text-form" style="display: inline-block;">
-        <option>Title</option>
-        <option>Director</option>
-        <option>Genre</option>
-    </select>
-    <input type="text" id="search-field" />
+    <form id="search-field">
+        <p style="padding: 7px; display: inline-block;">Search by</p>
+        <select id="search-property" class="text-form" style="display: inline-block; margin-right: 22px;">
+            <option>Title</option>
+            <option>Director</option>
+            <option>Genre</option>
+        </select>
+    
+        <input type="text" style="display: inset-block; margin-right:5px;"/>
+        <button type="submit">Search Movie</button>
+    </form>
 </div>
 
 
@@ -45,7 +49,7 @@
             <input type="text" name="director" placeholder="Director" /><br />
             <input type="text" name="genre" placeholder="Genre" /><br />
 
-            <button type="submit" class="submit">Submit</button>
+            <button type="submit" class="submit">Add Movie</button>
         </form>
     </details>
 </div>
