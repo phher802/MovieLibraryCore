@@ -3,6 +3,7 @@
 <head>
     <title>jQuery AJAX POST Form</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -18,11 +19,13 @@
         <option>Genre</option>
     </select>
     <input type="text" id="search-field" name="" />
+</div>    
+<div>
+    <button onclick="getAllMovies()" type = "submit" id = "search" value = "search" >Search</button>
 </div>
 
-
 <div>
-    <table id="movie-table"></table>
+    <table class ="movieData" id="movie-table"></table>
 </div>
 
 <div class="section">
@@ -40,7 +43,7 @@
 </div>
 
 
-<style>
+<!-- <style>
     html *
     {
         font-size: 1em !important;
@@ -60,7 +63,7 @@
         margin-top: 5px;
     }
 
-</style>
+</style> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>

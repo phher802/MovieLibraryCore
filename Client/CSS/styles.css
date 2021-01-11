@@ -1,0 +1,18 @@
+html *
+{
+    font-size: 1em !important;
+    font-family: Arial !important;
+}   
+.section{
+    margin-left: 15%;
+}
+.text-form>input, .text-form>button, .search-section>input{
+    padding: 7px;
+    text-align: left;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border-style: normal;
+}
+.submit{
+    margin-top: 5px;
+}
