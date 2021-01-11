@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPISample.Data;
 
 namespace WebAPISample.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20210110212327_DeleteImageProperty")]
+    partial class DeleteImageProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,34 +47,6 @@ namespace WebAPISample.Migrations
                             Director = "Jon Favreau",
                             Genre = "Animation",
                             Title = "Lion King"
-                        },
-                        new
-                        {
-                            MovieId = 2,
-                            Director = "Christopher Nolan",
-                            Genre = "Drama",
-                            Title = "The Dark Knight"
-                        },
-                        new
-                        {
-                            MovieId = 3,
-                            Director = "Christopher Nolan",
-                            Genre = "Drama",
-                            Title = "Inception"
-                        },
-                        new
-                        {
-                            MovieId = 4,
-                            Director = "David Gordon Green",
-                            Genre = "Comedy",
-                            Title = "Pineapple Express"
-                        },
-                        new
-                        {
-                            MovieId = 5,
-                            Director = "John McTiernan",
-                            Genre = "Action",
-                            Title = "Die Hard"
                         });
                 });
 #pragma warning restore 612, 618

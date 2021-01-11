@@ -25,7 +25,8 @@ namespace WebAPISample.Controllers
             var movies = _context.Movies.ToList();
 
             // Retrieve all movies from db logic
-            return Ok(new string[] { "movie1 string", "movie2 string" });
+            //return Ok(new string[] { "movie1 string", "movie2 string" });
+            return Ok(movies);
         }
 
         // GET api/movie/5
@@ -36,7 +37,6 @@ namespace WebAPISample.Controllers
 
             var movie = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
 
-            // return Ok(movie);
             return Ok(movie);
         }
 
@@ -51,36 +51,17 @@ namespace WebAPISample.Controllers
             return Ok();
         }
 
-        //PUT api/movie
-        //[HttpPut]
-        //public IActionResult Put(int id, [FromBody] Movie movie)
-        //{
-            
-        //    if (!ModelState.IsValid)
-        //        return BadRequest("Not a valid model");
+        //   PUT api/movie
+        [HttpPut]
+        public IActionResult Put(int id, [FromBody] Movie movie)
+        {
 
-        //    using (var newMovie = new Movie())
-        //    {
-        //        var movieInDb = _context.Movies.Where(m => m.MovieId == id).FirstOrDefault();
-        //        if (movieInDb != null)
-        //        {
-        //            movieInDb.Title = movie.Title;
-        //            movieInDb.Director = movie.Director;
-        //            movieInDb.Genre = movie.Genre;
-        //            movieInDb.Image = movie.Image;
+            _context.Update(movie);
+            _context.SaveChanges();
+        
 
-
-        //            movieInDb.SaveChanges();
-        //        }
-        //        else
-        //        {
-        //            return NotFound();
-        //        }
-
-        //    }
-
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // DELETE api/movie/5
         [HttpDelete("{id}")]
