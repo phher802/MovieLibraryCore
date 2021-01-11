@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <title>Edit Movie</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <p id="page-title"><b>Movie Library</b></p>
+
+    <div>
+        <table id="movie-individual" class="table-style">
+            <thead>
+                <th>Title</th>
+                <th>Director</th>
+                <th>Genre</th>
+                <th>Image File</th>
+            </thead>
+        </table>
+    </div>
+
+    <h4 class="section">See inaccuracies? Feel free to submit an edit to Movie Library.</h4>
+    <div class="section">
+        <details>
+            <summary style="margin-bottom: 30px;">Edit this movie here</summary>
+            <form id="my-form" class="text-form">
+                <input type="text" name="title" placeholder="Title" /><br />
+                <input type="text" name="director" placeholder="Director" /><br />
+                <input type="text" name="genre" placeholder="Genre" /><br />
+                <input type="text" name="image" placeholder="Image" /><br />
+
+                <button type="submit" class="submit">Add Movie</button>
+            </form>
+        </details>
+    </div>
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+</body>
+</html>

@@ -7,7 +7,7 @@
         background-color: rgb(36, 33, 33);
         color:white;
     }
-    #main-title{
+    #page-title{
         
         color:rgb(213, 213, 223);
         text-align: center; 
@@ -39,7 +39,7 @@
         margin-top: 17px;
     }
 
-    #movie-table{
+    .table-style{
         margin: 30px 15% 100px 15%;
         width: 70%;
         border-radius: 7px;
