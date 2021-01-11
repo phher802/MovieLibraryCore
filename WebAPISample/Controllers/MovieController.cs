@@ -25,10 +25,10 @@ namespace WebAPISample.Controllers
             var movies = _context.Movies.ToList();
 
             // Retrieve all movies from db logic
-<<<<<<< HEAD
+
             //return Ok(new string[] { "movie1 string", "movie2 string" });
-=======
->>>>>>> fa4275b2dd724b339f71d0cda150f8ec5ac70ca7
+
+
             return Ok(movies);
         }
 
@@ -55,21 +55,18 @@ namespace WebAPISample.Controllers
             return Ok();
         }
 
-<<<<<<< HEAD
         //   PUT api/movie
-=======
+
         // PUT api/movie
         
->>>>>>> fa4275b2dd724b339f71d0cda150f8ec5ac70ca7
+
         [HttpPut]
         public IActionResult Put(int id, [FromBody] Movie movie)
         {
-<<<<<<< HEAD
 
-=======
+
             // Update movie in db logic
             
->>>>>>> fa4275b2dd724b339f71d0cda150f8ec5ac70ca7
             _context.Update(movie);
             _context.SaveChanges();
         
