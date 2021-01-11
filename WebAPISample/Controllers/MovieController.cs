@@ -61,16 +61,14 @@ namespace WebAPISample.Controllers
         
 
         [HttpPut]
-        public IActionResult Put(int id, [FromBody] Movie movie)
+        public IActionResult Put([FromBody] Movie movie)
         {
 
 
             // Update movie in db logic
-            
-            _context.Update(movie);
+            _context.Movies.Update(movie);
             _context.SaveChanges();
         
-
             return Ok();
         }
 
