@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>jQuery AJAX POST Form</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Movie Library</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
+<p class="page-title"><b>Movie Library</b></p>
+
 <div id="response">
     <pre></pre>
 </div>
 
-<div class="section search-section">
-    <p>Search by</p>
-    <select id="search-property" class="text-form">
-        <option>Title</option>
-        <option>Director</option>
-        <option>Genre</option>
-    </select>
-    <input type="text" id="search-field" name="" />
-</div>    
-<div>
-    <button onclick="getAllMovies()" type = "submit" id = "search" value = "search" >Search</button>
+<div class="section search-section" >
+    <form id="search-field">
+        <p style="padding: 7px; display: inline-block;">Search by</p>
+        <select id="search-property" class="text-form" style="display: inline-block; margin-right: 22px;">
+            <option>Title</option>
+            <option>Director</option>
+            <option>Genre</option>
+        </select>
+    
+        <input type="text" style="display: inset-block; margin-right:5px;"/>
+        <button type="submit">Search Movie</button>
+    </form>
 </div>
 
 <div>
+<<<<<<< HEAD
     <table class ="movieData" id="movie-table"></table>
+=======
+    <table id="movie-table" class="table-style">
+        <thead>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Image File</th>
+        </thead>
+    </table>
+>>>>>>> 0b174ed555b127b706a990b0ba64f44acdaa7171
 </div>
 
+
+<h4 class="section">Are we missing a movie in our library? Use the form below to add a movie.</h4>
 <div class="section">
-    <h6>Are we missing a movie in our library? Use the form below to add a movie.</h6>
-        <details>
-            <summary style="margin-bottom: 20px;">Add a movie here</summary>
-            <form id="my-form" class="text-form">
-                <input type="text" name="title" placeholder="Title" /><br />
-                <input type="text" name="director" placeholder="Director" /><br />
-                <input type="text" name="genre" placeholder="Genre" /><br />
+    <details>
+        <summary style="margin-bottom: 30px;">Add a movie here</summary>
+        <form id="my-form" class="text-form">
+            <input type="text" name="title" placeholder="Title" /><br />
+            <input type="text" name="director" placeholder="Director" /><br />
+            <input type="text" name="genre" placeholder="Genre" /><br />
 
-                <button type="submit" class="submit">Submit</button>
-            </form>
-        </details>
+            <button type="submit" class="submit">Add Movie</button>
+        </form>
+    </details>
 </div>
 
 
+<<<<<<< HEAD
 <!-- <style>
     html *
     {
@@ -64,6 +81,9 @@
     }
 
 </style> -->
+=======
+
+>>>>>>> 0b174ed555b127b706a990b0ba64f44acdaa7171
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
 </body>
