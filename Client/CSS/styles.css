@@ -56,3 +56,12 @@
         padding: 15px;
         background-color: rgb(109, 29, 29)
     }
+
+    th{
+        text-decoration: underline;
+    }
+
+    td, tr{
+        text-align: center;
+        padding: 15px;
+    }
