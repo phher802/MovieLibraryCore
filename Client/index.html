@@ -19,8 +19,8 @@
         <p style="padding: 7px; display: inline-block;">Search by</p>
         <select id="search-property" class="text-form" style="display: inline-block; margin-right: 22px;">
             <option id = "title" selected="selected" value="title">Title</option>
-            <option id ="director" selected="selected" value ="director">Director</option>
-            <option id ="genre" selected="selected" value ="genre">Genre</option>
+            <option id ="director"  value ="director">Director</option>
+            <option id ="genre"  value ="genre">Genre</option>
         </select>
     
         <input type="text" id="movieId" style="display: inset-block; margin-right:5px;"/>
@@ -57,22 +57,17 @@
 
 <hr style="margin: 30px 15% 30px 15%;"/>
 
-<div id="movie-panel" class="edit-section">
-    <dl id="movie-details">
-    </dl>
-</div>
 
-
-<div class="edit-section">
-    <h4 class="section">See inaccuracies? Feel free to submit an edit to Movie Library.</h4>
-    <div class="section">
+<div class="edit-section section">
+    <h1 id="movie-title-big" class="page-title" style="margin-bottom: 50px;"></h1>
+    <div id="edit-text-elements">
+        <h4>See inaccuracies? Feel free to submit an edit to Movie Library.</h4>
         <details>
             <summary style="margin-bottom: 30px;">Edit this movie here</summary>
             <form id="edit-form" class="text-form">
-                <input type="text" name="title" placeholder="Title" /><br />
-                <input type="text" name="director" placeholder="Director" /><br />
-                <input type="text" name="genre" placeholder="Genre" /><br />
-                <input type="text" name="image" placeholder="Image" /><br />
+                <input type="text" id="movie-title" name="title" placeholder="Title" /><br />
+                <input type="text" id="movie-director" name="director" placeholder="Director" /><br />
+                <input type="text" id="movie-genre" name="genre" placeholder="Genre" /><br />
 
                 <button type="submit" class="submit" id="edit-button">Edit Movie</button>
             </form>

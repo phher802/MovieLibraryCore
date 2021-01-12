@@ -29,7 +29,7 @@
 
 $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
     data.map(element => {
-        $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="" onclick="sendId(${element.movieId})">${element.title}</a></td>
+        $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
                 <td>${element.director}</td>
                 <td>${element.genre}</td></tr>`);
     });
@@ -60,71 +60,64 @@ $("#edit-button").on("click",
 
         $('#edit-form').submit(data);
 
+        e.preventDefault();
+
+        $('#edit-form').submit(data);
     }
+)
+// $(`#${String(movieId)}`).on("click",
+//     $.get('https://localhost:44325/api/movie/' +movieId, function(data){
+//         $(".edit-section").css("display", "inline")
+//         data.map(element => {
+//             $('#movie-title-big').html(`${element.title}`);
+//             $('#movie-title').value = element.title;
+//             $('#movie-director').value = element.director;
+//             $('#movie-genre').value = element.genre;
+//         });
 
-);
 
+//     })  
+// )
 
-// $("#movieId").on("click",
-//     function clickForm(e) {
-//         e.preventDefault();
-//         console.log("button is clicked");
-//         var dict = {
-//             Title: this["title"].value,
-//             Director: this["director"].value,
-//             Genre: this["genre"].value
-//         }
-    
-//         $.ajax({
-//         url: 'https://localhost:44325/api/movie',
-//         dataType: 'json',
-//         contentType: 'application/json',
-//         type: 'GET',
-//         data: JSON.stringify(dict),
-//         success: function (data, textStatus, jQxhr) {
-//             $('#response pre').html('');
-//         }
-//         })
-//         .then(function (data) {
-//             var foundMovie = $('#select-property');
-//             foundMovie.filter(function (data) {
-
-//             $('option:selected', this).each(function () {
-//                 var selector = "#" + (this).val().join('Text', '#') + 'Text';
-//                 $(selector).show();
-                
-//             });
-
-//         })
-    
-
-   
-//     }
-// );
-// $('#edit-form').submit(data);
-
-$("#movieId").on("click", function getMovie(id){
+function getMovie(e) {
+    e.preventDefault();
     console.log("button clicked");
-    $(document).ready($.get('https://localhost:44325/api/movie' + id, 
-    function (data){
-        var findMovie = $('option:selected',this).data('section');
-        data.filter(){
-            $('#' + findMovie).show();
-        }
-      
-    }))
-    console.log(findMovie);
-});
-$('#edit-form').submit(data);
+    let search = $('#movieId').val();
+    console.log(search);
+
+    $.get('https://localhost:44325/api/movie',
+        function (data) {
+            //  var findMovie = $('option:selected',this).data('section');
+            let filterData = data.filter((movie) => {
+                if (movie.title.contains(search) || movie.genre.contrains(search)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            filterData.map(element => {
+                $('#movie-table').html('');
+                $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
+            <td>${element.director}</td>
+            <td>${element.genre}</td></tr>`);
+            });
+        })
+
+};
+$('#search-field').submit(getMovie);
+
+
 
 function sendId(id) {
-    $.get('https://localhost:44325/api/movie/' + id, function (data) {
-        $(".edit-section").css("display", "inline")
-        data.map(element => {
-            $('#movie-details').append(`<dt>Title</dt><dd>${element.title}</dd>
-                <dt>Director</dt><dd>${element.director}</dd>
-                <dt>Genre</dt><dd>${element.genre}</dd>`);
-        });
-
-    })
-};
+    $.get("https://localhost:44325/api/movie/" + id,
+        function (data) {
+            $(".edit-section").css("display", "inline");
+            $('#movie-title-big').html(`${data.title}`);
+            $('#movie-title').attr("placeholder", `${data.title}`);
+            $('#movie-director').attr("placeholder", data.director);
+            $('#movie-genre').attr("placeholder", `${data.genre}`);
+            $('#movie-title').attr("value", `${data.title}`);
+            $('#movie-director').attr("value", data.director);
+            $('#movie-genre').attr("value", `${data.genre}`);
+        })
+}
