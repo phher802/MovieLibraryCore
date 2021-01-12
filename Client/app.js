@@ -38,58 +38,42 @@ $(document).ready($.get('https://localhost:44325/api/movie', function(data){
 )
 
 $("#edit-button").on("click", 
-    function processForm( e ){
+    $("#edit-form").submit(function(e){
         var dict = {
+            MovieId : this["movieId"].value,
             Title : this["title"].value,
             Director: this["director"].value,
             Genre: this["genre"].value
         };
 
-    $.ajax({
-        url: 'https://localhost:44325/api/movie',
-        dataType: 'json',
-        contentType: 'application/json',
-        type: 'put',
-        data: JSON.stringify(dict),
-        success: function( data, textStatus, jQxhr ){
-            $('#response pre').html( '' );
-        },
-        error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-        }
+        $.ajax({
+            url: 'https://localhost:44325/api/movie',
+            dataType: 'json',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(dict),
+            success: function( data, textStatus, jQxhr ){
+                console.log(data);
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+
+        e.preventDefault();
     })
+);
 
-    e.preventDefault();
-
-    $('#edit-form').submit( data );
-    }
-); 
-
-// $(`#${String(movieId)}`).on("click",
-//     $.get('https://localhost:44325/api/movie/' +movieId, function(data){
-//         $(".edit-section").css("display", "inline")
-//         data.map(element => {
-//             $('#movie-title-big').html(`${element.title}`);
-//             $('#movie-title').value = element.title;
-//             $('#movie-director').value = element.director;
-//             $('#movie-genre').value = element.genre;
-//         });
-
-       
-//     })  
-// )
 
 
 function sendId(id){
     $.get("https://localhost:44325/api/movie/" +id, function(data){
         $(".edit-section").css("display", "inline");
-        $('#movie-title-big').html(`${data.title}`);
-        $('#movie-title').attr("placeholder", `${data.title}`);
-        $('#movie-director').attr("placeholder", data.director);
-        $('#movie-genre').attr("placeholder", `${data.genre}`);
-        $('#movie-title').attr("value", `${data.title}`);
+        $('#movie-id').attr("value", data.movieId);
+        $('#movie-title-big').html(data.title);
+        $('#movie-title').attr("value", data.title);
         $('#movie-director').attr("value", data.director);
-        $('#movie-genre').attr("value", `${data.genre}`);
+        $('#movie-genre').attr("value", data.genre);
     })  
 }
 
