@@ -38,6 +38,23 @@ $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
     });
 }))
 
+    $.ajax({
+        url: 'https://localhost:44325/api/movie',
+        dataType: 'json',
+        contentType: 'application/json',
+        type: 'put',
+        data: JSON.stringify(dict),
+        success: function( data, textStatus, jQxhr ){
+            $('#response pre').html( '' );
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    })
+
+    $('#edit-form').submit( data );
+    }
+); 
 
 $(".btn").on("click", function getMovie(id){
     console.log("button clicked");
@@ -62,4 +79,16 @@ $("button").on("click", function getMovie(){
         data.contains(element => $('#movie-table'))
     }))
 });
+function sendId(id){
+    $.get('https://localhost:44325/api/movie/' +id, function(data){
+        $(".edit-section").css("display", "inline")
+        data.map(element => {
+            $('#movie-details').append(`<dt>Title</dt><dd>${element.title}</dd>
+                <dt>Director</dt><dd>${element.director}</dd>
+                <dt>Genre</dt><dd>${element.genre}</dd>`
+            );
+        });
+
+    })  
+}
 

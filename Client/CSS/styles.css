@@ -47,7 +47,7 @@
     }
 
     .table-style {
-        margin: 30px 15% 100px 15%;
+        margin: 30px 15% 35px 15%;
         width: 70%;
         border-radius: 7px;
         border-style: outset;
@@ -57,11 +57,25 @@
         background-color: rgb(109, 29, 29)
     }
 
-    th{
+    th, dt{
         text-decoration: underline;
+        font-weight:bold;
     }
 
     td, tr{
         text-align: center;
         padding: 15px;
+    }
+
+    #movie-panel{
+        text-align: left;
+        display: inline-block;
+        margin: 30px 70% 35px 23%;
+        width: 15%;
+        border-radius: 7px;
+        border-style: outset;
+        border-width: 3px;
+        border-color: rgb(233, 90, 74);
+        padding: 15px;
+        background-color: rgb(109, 29, 29)
     }
