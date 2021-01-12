@@ -18,17 +18,17 @@
     <form id="search-field">
         <p style="padding: 7px; display: inline-block;">Search by</p>
         <select id="search-property" class="text-form" style="display: inline-block; margin-right: 22px;">
-            <option>Title</option>
-            <option>Director</option>
-            <option>Genre</option>
+            <option id = "title" selected="selected" value="title">Title</option>
+            <option id ="director" selected="selected" value ="director">Director</option>
+            <option id ="genre" selected="selected" value ="genre">Genre</option>
         </select>
     
         <input type="text" id="movieId" style="display: inset-block; margin-right:5px;"/>
-        <button class="btn" onclick= "" type="submit">Search Movie</button>
+        <button class="btn" type="submit">Search Movie</button>
     </form>
 </div>
 
-<div>
+<div class = "table1">
     <table id="movie-table" class="table-style">
         <thead>
             <th>Title</th>

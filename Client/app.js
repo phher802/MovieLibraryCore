@@ -29,61 +29,93 @@
 
 $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
     data.map(element => {
-        $('#movie-table').append(
-            `<tr>
-            <td id="${element.movieId}">${element.title}</td>
-            <td>${element.director}</td>
-            <td>${element.genre}</td>
-            </tr>`);
+        $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="" onclick="sendId(${element.movieId})">${element.title}</a></td>
+                <td>${element.director}</td>
+                <td>${element.genre}</td></tr>`);
     });
 }))
 
-$.ajax({
-    url: 'https://localhost:44325/api/movie',
-    dataType: 'json',
-    contentType: 'application/json',
-    type: 'put',
-    data: JSON.stringify(dict),
-    success: function (data, textStatus, jQxhr) {
-        $('#response pre').html('');
-    },
-    error: function (jqXhr, textStatus, errorThrown) {
-        console.log(errorThrown);
-    }
+$("#edit-button").on("click",
+    function processForm(e) {
 
-    $('#edit-form').submit(data);
-})
+        var dict = {
+            Title: this["title"].value,
+            Director: this["director"].value,
+            Genre: this["genre"].value
+        };
 
-
-$(".btn").on("click", function getMovie(movie) {
-    console.log("button clicked");
-    $(document).ready(function () {
         $.ajax({
-            type: 'GET',
-            url: 'https://localhost:44325/api/movie' + movie,
+            url: 'https://localhost:44325/api/movie',
             dataType: 'json',
             contentType: 'application/json',
-            data: JSON.stringify({
-                "scale": {
-                    "desired-instances": 123
-                }
-            })
-        }).then(function (data) {
-            // data.movieId.find();
-            //  var foundMovie = document.getElementById('movieId').value;
-            console.log(data);
-        });
-    });
+            type: 'put',
+            data: JSON.stringify(dict),
+            success: function (data, textStatus, jQxhr) {
+                $('#response pre').html('');
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown);
+            }
+        })
+
+        $('#edit-form').submit(data);
+
+    }
+
+);
+
+
+// $("#movieId").on("click",
+//     function clickForm(e) {
+//         e.preventDefault();
+//         console.log("button is clicked");
+//         var dict = {
+//             Title: this["title"].value,
+//             Director: this["director"].value,
+//             Genre: this["genre"].value
+//         }
+    
+//         $.ajax({
+//         url: 'https://localhost:44325/api/movie',
+//         dataType: 'json',
+//         contentType: 'application/json',
+//         type: 'GET',
+//         data: JSON.stringify(dict),
+//         success: function (data, textStatus, jQxhr) {
+//             $('#response pre').html('');
+//         }
+//         })
+//         .then(function (data) {
+//             var foundMovie = $('#select-property');
+//             foundMovie.filter(function (data) {
+
+//             $('option:selected', this).each(function () {
+//                 var selector = "#" + (this).val().join('Text', '#') + 'Text';
+//                 $(selector).show();
+                
+//             });
+
+//         })
+    
+
+   
+//     }
+// );
+// $('#edit-form').submit(data);
+
+$("#movieId").on("click", function getMovie(id){
+    console.log("button clicked");
+    $(document).ready($.get('https://localhost:44325/api/movie' + id, 
+    function (data){
+        var findMovie = $('option:selected',this).data('section');
+        data.filter(){
+            $('#' + findMovie).show();
+        }
+      
+    }))
+    console.log(findMovie);
 });
-
-
-// $("button").on("click", function getMovie(id){
-//     console.log("button clicked");
-//     $(document).ready($.get('https://localhost:44325/api/movie' + id, function (data){
-//         data.contains(element => $('#movie-table'))
-//     }))
-// });
-
+$('#edit-form').submit(data);
 
 function sendId(id) {
     $.get('https://localhost:44325/api/movie/' + id, function (data) {
@@ -95,4 +127,4 @@ function sendId(id) {
         });
 
     })
-}
+};
