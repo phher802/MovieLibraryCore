@@ -58,7 +58,7 @@ namespace WebAPISample.Controllers
 
         //   PUT api/movie
         [HttpPut]
-        public IActionResult Put([FromBody] Movie movie)
+        public IActionResult Put(int id, [FromBody] Movie movie)
         {
 
             //if (!ModelState.IsValid)
@@ -66,14 +66,14 @@ namespace WebAPISample.Controllers
             //    return BadRequest("Not a valid model");
             //}
 
-            var movieInDb = _context.Movies.Where(m => m.MovieId == movie.MovieId).SingleOrDefault();
+            var movieInDb = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
 
             movieInDb.Title = movie.Title;
             movieInDb.Director = movie.Director;
             movieInDb.Genre = movie.Genre;
 
-            // Update movie in db logic
-            _context.Movies.Update(movie);
+
+            _context.Movies.Update(movieInDb);
             _context.SaveChanges();
         
             return Ok();

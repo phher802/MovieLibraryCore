@@ -38,15 +38,15 @@ $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
 
 $("#edit-button").on("click", 
     $("#edit-form").submit(function(e){
+        e.preventDefault();
         var dict = {
-            MovieId : this["movieId"].value,
             Title : this["title"].value,
             Director: this["director"].value,
             Genre: this["genre"].value
         };
 
         $.ajax({
-            url: 'https://localhost:44325/api/movie',
+            url: 'https://localhost:44325/api/movie/?id=' + this["movieId"].value,
             dataType: 'json',
             type: 'PUT',
             contentType: 'application/json',
@@ -58,8 +58,6 @@ $("#edit-button").on("click",
                 console.log( errorThrown );
             }
         });
-
-        e.preventDefault();
     })
 );
 
@@ -95,7 +93,7 @@ $('#search-field').submit(getMovie);
 function sendId(id){
     $.get("https://localhost:44325/api/movie/" +id, function(data){
         $(".edit-section").css("display", "inline");
-        $('#movie-id').attr("value", data.movieId);
+        $('#movie-id').attr("value", id);
         $('#movie-title-big').html(data.title);
         $('#movie-title').attr("value", data.title);
         $('#movie-director').attr("value", data.director);
