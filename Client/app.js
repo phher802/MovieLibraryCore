@@ -68,37 +68,6 @@ $(document).ready($.get('https://localhost:44325/api/movie', function(data){
 
 
     
-        // $("button").on('click', function(e){
-        //     e.preventDefault();
-        //     console.log("successfull click");
-        // })
-        
-        
-        // $(document).ready(function () {
-        //     console.log("Hi, you're doing good so far.")
-        //     $.ajax({
-        //         url: 'https://localhost:44325/api/movie',
-        //         dataType: 'json',
-        //         type: 'GET',
-        //         contentType: 'application/json',
-        //         data: JSON.stringify(dict),
-        //         success: function () {
-        //             $('.movie-table').html('');
-        //         }
-        //     })
-        //     .then(function (data) {
-        //         $.each(data, function (index, ) {
-        //             console.log("here's another.")
-        //             $('#movie-table').append()
-        //             "<tr>" +
-        //             "<td >" + "<a>" + value.Title + "</a>" + "</td>"
-        //             "<td>" + value.Director + "</td>"
-        //             "<td>" + value.Genre + "</td>"
-        //                 "</tr>"
-        //         });
-
-        //     });
-        // });
-    
+  
 
 
