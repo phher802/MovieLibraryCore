@@ -24,7 +24,6 @@
     }
 
     $('#my-form').submit(processForm);
-
 })(jQuery);
 
 $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
@@ -59,7 +58,9 @@ $("#edit-button").on("click",
             }
         });
     })
+    
 );
+
 
 
 function getMovie(e) {
@@ -70,16 +71,18 @@ function getMovie(e) {
 
     $.get('https://localhost:44325/api/movie',
         function (data) {
+            search = String(search);
             //  var findMovie = $('option:selected',this).data('section');
             let filterData = data.filter((movie) => {
-                if (movie.title.contains(search) || movie.genre.contrains(search)) {
+                if ((movie.title != null && movie.title.includes(search)) || (movie.director != null && movie.director.includes(search)) ||
+                (movie.genre != null && movie.genre.includes(search))) {
                     return true;
                 } else {
                     return false;
                 }
             })
-            filterData.map(element => {
-                $('#movie-table').html('');
+            $('#movie-table').html('');
+            filterData.map(function(element) {
                 $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
             <td>${element.director}</td>
             <td>${element.genre}</td></tr>`);

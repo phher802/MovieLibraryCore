@@ -75,7 +75,7 @@ namespace WebAPISample.Controllers
 
             _context.Movies.Update(movieInDb);
             _context.SaveChanges();
-        
+
             return Ok();
         }
 
