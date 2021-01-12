@@ -59,6 +59,8 @@ $("#edit-button").on("click",
         }
     })
 
+    e.preventDefault();
+
     $('#edit-form').submit( data );
     }
 ); 
@@ -67,12 +69,13 @@ function sendId(id){
     $.get('https://localhost:44325/api/movie/' +id, function(data){
         $(".edit-section").css("display", "inline")
         data.map(element => {
-            $('#movie-details').append(`<dt>Title</dt><dd>${element.title}</dd>
-                <dt>Director</dt><dd>${element.director}</dd>
-                <dt>Genre</dt><dd>${element.genre}</dd>`
-            );
+            $('#movie-title-big').html(`${element.title}`);
+            $('#movie-title').value = element.title;
+            $('#movie-director').value = element.director;
+            $('#movie-genre').value = element.genre;
         });
 
+        e.preventDefault();
     })  
 }
 
