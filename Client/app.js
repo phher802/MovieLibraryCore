@@ -29,7 +29,7 @@
 
 $(document).ready($.get('https://localhost:44325/api/movie', function(data){
        data.map(element => {
-            $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="" onclick="sendId(${element.movieId})">${element.title}</a></td>
+            $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
                 <td>${element.director}</td>
                 <td>${element.genre}</td></tr>`
             );
@@ -65,17 +65,31 @@ $("#edit-button").on("click",
     }
 ); 
 
-function sendId(id){
-    $.get('https://localhost:44325/api/movie/' +id, function(data){
-        $(".edit-section").css("display", "inline")
-        data.map(element => {
-            $('#movie-title-big').html(`${element.title}`);
-            $('#movie-title').value = element.title;
-            $('#movie-director').value = element.director;
-            $('#movie-genre').value = element.genre;
-        });
+// $(`#${String(movieId)}`).on("click",
+//     $.get('https://localhost:44325/api/movie/' +movieId, function(data){
+//         $(".edit-section").css("display", "inline")
+//         data.map(element => {
+//             $('#movie-title-big').html(`${element.title}`);
+//             $('#movie-title').value = element.title;
+//             $('#movie-director').value = element.director;
+//             $('#movie-genre').value = element.genre;
+//         });
 
-        e.preventDefault();
+       
+//     })  
+// )
+
+
+function sendId(id){
+    $.get("https://localhost:44325/api/movie/" +id, function(data){
+        $(".edit-section").css("display", "inline");
+        $('#movie-title-big').html(`${data.title}`);
+        $('#movie-title').attr("placeholder", `${data.title}`);
+        $('#movie-director').attr("placeholder", data.director);
+        $('#movie-genre').attr("placeholder", `${data.genre}`);
+        $('#movie-title').attr("value", `${data.title}`);
+        $('#movie-director').attr("value", data.director);
+        $('#movie-genre').attr("value", `${data.genre}`);
     })  
 }
 
