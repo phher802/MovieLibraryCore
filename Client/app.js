@@ -27,6 +27,16 @@
 
 })(jQuery); 
 
+$(document).ready($.get('https://localhost:44325/api/movie', function(data){
+       data.map(element => {
+            $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="" onclick="sendId(${element.movieId})">${element.title}</a></td>
+                <td>${element.director}</td>
+                <td>${element.genre}</td></tr>`
+            );
+        });
+    })
+)
+
 $("#edit-button").on("click", 
     function processForm( e ){
         var dict = {
@@ -51,23 +61,18 @@ $("#edit-button").on("click",
 
     $('#edit-form').submit( data );
     }
-)(jQuery); 
+); 
 
-
-$(document).ready($.get('https://localhost:44325/api/movie', function(data){
-       data.map(element => {
-            $('#movie-table').append(`<tr><td id="${element.movieId}">${element.title}</td>
-                <td>${element.director}</td>
-                <td>${element.genre}</td></tr>`
+function sendId(id){
+    $.get('https://localhost:44325/api/movie/' +id, function(data){
+        $(".edit-section").css("display", "inline")
+        data.map(element => {
+            $('#movie-details').append(`<dt>Title</dt><dd>${element.title}</dd>
+                <dt>Director</dt><dd>${element.director}</dd>
+                <dt>Genre</dt><dd>${element.genre}</dd>`
             );
         });
-    })
-)
 
-
-
-
-    
-  
-
+    })  
+}
 
