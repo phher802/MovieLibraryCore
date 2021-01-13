@@ -31,6 +31,9 @@ namespace WebAPISample.Migrations
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -44,6 +47,7 @@ namespace WebAPISample.Migrations
                             MovieId = 1,
                             Director = "Jon Favreau",
                             Genre = "Animation",
+                            Image = "",
                             Title = "Lion King"
                         },
                         new
@@ -51,6 +55,7 @@ namespace WebAPISample.Migrations
                             MovieId = 2,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
+                            Image = "",
                             Title = "The Dark Knight"
                         },
                         new
@@ -58,6 +63,7 @@ namespace WebAPISample.Migrations
                             MovieId = 3,
                             Director = "Christopher Nolan",
                             Genre = "Drama",
+                            Image = "",
                             Title = "Inception"
                         },
                         new
@@ -65,6 +71,7 @@ namespace WebAPISample.Migrations
                             MovieId = 4,
                             Director = "David Gordon Green",
                             Genre = "Comedy",
+                            Image = "",
                             Title = "Pineapple Express"
                         },
                         new
@@ -72,6 +79,7 @@ namespace WebAPISample.Migrations
                             MovieId = 5,
                             Director = "John McTiernan",
                             Genre = "Action",
+                            Image = "",
                             Title = "Die Hard"
                         });
                 });

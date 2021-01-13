@@ -64,6 +64,7 @@ namespace WebAPISample.Controllers
             movieInDb.Title = movie.Title;
             movieInDb.Director = movie.Director;
             movieInDb.Genre = movie.Genre;
+            movieInDb.Image = movie.Image;
 
 
             _context.Movies.Update(movieInDb);

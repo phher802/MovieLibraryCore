@@ -28,35 +28,39 @@ namespace WebAPISample.Data
                         Title = "Lion King",
                         Director = "Jon Favreau",
                         Genre = "Animation",
-
+                        Image = ""
                     },
                     new Movie
                     {
                         MovieId = 2,
                         Title = "The Dark Knight",
                         Genre = "Drama",
-                        Director = "Christopher Nolan"
+                        Director = "Christopher Nolan",
+                        Image = ""
                     },
                     new Movie
                     {
                         MovieId = 3,
                         Title = "Inception",
                         Genre = "Drama",
-                        Director = "Christopher Nolan"
+                        Director = "Christopher Nolan",
+                        Image = ""
                     },
                      new Movie
                      {
                          MovieId = 4,
                          Title = "Pineapple Express",
                          Genre = "Comedy",
-                         Director = "David Gordon Green"
+                         Director = "David Gordon Green",
+                         Image = ""
                      },
                      new Movie
                      {
-                          MovieId = 5,
-                          Title = "Die Hard",
-                          Genre = "Action",
-                          Director = "John McTiernan"
+                         MovieId = 5,
+                         Title = "Die Hard",
+                         Genre = "Action",
+                         Director = "John McTiernan",
+                         Image = ""
                      });
         }
 

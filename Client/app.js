@@ -3,7 +3,8 @@
         var dict = {
             Title: this["title"].value,
             Director: this["director"].value,
-            Genre: this["genre"].value
+            Genre: this["genre"].value,
+            Image: this["image"].value
         };
 
         $.ajax({
@@ -32,7 +33,8 @@ $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
     data.map(element => {
         $('#movie-table').append(`<tr><td class='title-click' id="${element.movieId}"><a href="#edit-form" onclick="sendId(${element.movieId})">${element.title}</a></td>
                 <td>${element.director}</td>
-                <td>${element.genre}</td></tr>`);
+                <td>${element.genre}</td>
+                <td>${element.image}</td></tr>`);
     });
 }))
 
@@ -43,7 +45,8 @@ $("#edit-button").on("click",
         var dict = {
             Title : this["title"].value,
             Director: this["director"].value,
-            Genre: this["genre"].value
+            Genre: this["genre"].value,
+            Image: this["image"].value
         };
 
         $.ajax({
@@ -94,6 +97,7 @@ function getMovie(e) {
                 $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="#edit-form" onclick="sendId(${element.movieId})">${element.title}</a></td>
             <td>${element.director}</td>
             <td>${element.genre}</td>
+            <td>${element.image}</td>
             </tr>`);
             });
         }
@@ -103,14 +107,21 @@ $('#search-field').submit(getMovie);
 
 
 function sendId(id){
-    $(".edit-section").css("display", "inline");
+
+    $(".edit-section").css("display", "inline-block");
+    $(".image-section").css("display", "inline-block");
     $.get("https://localhost:44325/api/movie/" +id, function(data){
         $('#movie-id').attr("value", id);
         $('#movie-title-big').html(data.title);
         $('#movie-title').attr("value", data.title);
         $('#movie-director').attr("value", data.director);
         $('#movie-genre').attr("value", data.genre);
+        $('#movie-image').attr("value", data.image);
+        $('.image-section').attr("src", data.image);
     })  
+    if(data.image != "" && data.image != null){
+        $(".image-section").css("display", "none"); 
+    }
 }
 
 

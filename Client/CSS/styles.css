@@ -47,6 +47,7 @@
     }
 
     .table-style {
+        table-layout: fixed;
         margin: 30px 15% 35px 15%;
         width: 70%;
         border-radius: 7px;
@@ -57,33 +58,29 @@
         background-color: rgb(109, 29, 29)
     }
 
-    th, dt{
+    image{
+        width: 40%;
+        height: auto;
+    }
+
+    th{
         text-decoration: underline;
         font-weight:bold;
+        
     }
 
     td, tr{
         text-align: center;
         padding: 15px;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     a{
-        text-decoration-color: white;
-        text-decoration: underline;
+        color: inherit;
     }
 
-    a:link{
-        color: white;
-        text-decoration-color: white;
-        text-decoration: underline;
-    }
-
-    .a:hover{
-        cursor: pointer;
-        color: rgb(123, 123, 179);
-    }
-
-    button:hover{
+    a:hover{
         cursor: pointer;
     }
 

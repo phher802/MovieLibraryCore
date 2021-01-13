@@ -51,7 +51,8 @@
             <input type="text" name="title" placeholder="Title" /><br />
             <input type="text" name="director" placeholder="Director" /><br />
             <input type="text" name="genre" placeholder="Genre" /><br />
-
+            <input type="text" name="image" placeholder="Image" /><br />
+            
             <button type="submit" class="submit">Add Movie</button>
         </form>
     </details>
@@ -60,10 +61,10 @@
 <hr style="margin: 30px 15% 30px 15%;"/>
 
 
-<div class="edit-section" style="display: none;">  
+<div class="edit-section" style="display: none; margin-left: 23%;">  
     <h2 id="movie-title-big" class="page-title section" style="text-align: left;"></h2>
 
-    <form id="edit-form" class="text-form section">
+    <form id="edit-form" class="text-form">
         <h4>See inaccuracies? Feel free to submit an edit to Movie Library.</h4>
         <p style="margin-bottom: 30px;">Edit this movie here</p>
         
@@ -71,9 +72,14 @@
         <input type="text" id="movie-title" name="title" placeholder="Title" /><br />
         <input type="text" id="movie-director" name="director" placeholder="Director" /><br />
         <input type="text" id="movie-genre" name="genre" placeholder="Genre" /><br />
+        <input type="text" id="movie-image" name="image" placeholder="Image" /><br />
 
         <button type="submit" class="submit" id="edit-button">Edit Movie</button>
     </form>
+</div>
+
+<div class="image-section" style="display: none;">
+    <img alt="movie image" />
 </div>
 
 
