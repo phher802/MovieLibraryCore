@@ -18,9 +18,11 @@
     <form id="search-field">
         <p style="padding: 7px; display: inline-block;">Search by</p>
         <select id="search-property" class="text-form" style="display: inline-block; margin-right: 22px;">
-            <option id = "title" selected="selected" value="title">Title</option>
+            <option id= "default" selected="selected" value="default"></option>
+            <option id = "title" value="title">Title</option>
             <option id ="director"  value ="director">Director</option>
             <option id ="genre"  value ="genre">Genre</option>
+           
         </select>
     
         <input type="text" id="movieId" style="display: inset-block; margin-right:5px;"/>
@@ -28,7 +30,7 @@
     </form>
 </div>
 
-<div class = "table1">
+<div>
     <table id="movie-table" class="table-style">
         <thead>
             <th>Title</th>
@@ -68,6 +70,7 @@
                 <input type="text" id="movie-title" name="title" placeholder="Title" /><br />
                 <input type="text" id="movie-director" name="director" placeholder="Director" /><br />
                 <input type="text" id="movie-genre" name="genre" placeholder="Genre" /><br />
+                
 
                 <button type="submit" class="submit" id="edit-button">Edit Movie</button>
             </form>

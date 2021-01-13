@@ -18,9 +18,11 @@
             error: function (jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
             }
+
         });
 
         e.preventDefault();
+
     }
 
     $('#my-form').submit(processForm);
@@ -58,51 +60,46 @@ $("#edit-button").on("click",
             }
         })
 
-        $('#edit-form').submit(data);
-
         e.preventDefault();
 
         $('#edit-form').submit(data);
     }
 )
-// $(`#${String(movieId)}`).on("click",
-//     $.get('https://localhost:44325/api/movie/' +movieId, function(data){
-//         $(".edit-section").css("display", "inline")
-//         data.map(element => {
-//             $('#movie-title-big').html(`${element.title}`);
-//             $('#movie-title').value = element.title;
-//             $('#movie-director').value = element.director;
-//             $('#movie-genre').value = element.genre;
-//         });
 
 
-//     })  
-// )
 
 function getMovie(e) {
     e.preventDefault();
     console.log("button clicked");
     let search = $('#movieId').val();
-    console.log(search);
 
+    // let search = searchOption.toLowerCase();
+    console.log(search);
+    //  let defaultSearch = ('select option:selected');
     $.get('https://localhost:44325/api/movie',
         function (data) {
-            //  var findMovie = $('option:selected',this).data('section');
+
             let filterData = data.filter((movie) => {
-                if (movie.title.contains(search) || movie.genre.contrains(search)) {
+                if (movie.title.includes(search) || movie.genre.includes(search)) {
                     return true;
                 } else {
                     return false;
                 }
             })
-            filterData.map(element => {
-                $('#movie-table').html('');
-                $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
-            <td>${element.director}</td>
-            <td>${element.genre}</td></tr>`);
-            });
-        })
 
+
+
+            $('#movie-table').html('');
+            filterData.map(element => {
+                $('#movie-table').append(
+                    `<tr>
+            <td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
+            <td>${element.director}</td>
+            <td>${element.genre}</td>
+            </tr>`);
+            });
+        }
+    )
 };
 $('#search-field').submit(getMovie);
 
