@@ -75,11 +75,13 @@ function getMovie(e) {
     //  let defaultSearch = ('select option:selected');
     $.get('https://localhost:44325/api/movie',
         function (data) {
-            search = String(search);
-            //  var findMovie = $('option:selected',this).data('section');
+
+           search = String(search);
+           newSearch = search.toLowerCase();
+
             let filterData = data.filter((movie) => {
-                if ((movie.title != null && movie.title.includes(search)) || (movie.director != null && movie.director.includes(search)) ||
-                (movie.genre != null && movie.genre.includes(search))) {
+                if ((movie.title != null && movie.title.includes(newSearch)) || (movie.director != null && movie.director.includes(newSearch)) ||
+                (movie.genre != null && movie.genre.includes(newSearch))) {
                     return true;
                 } else {
                     return false;

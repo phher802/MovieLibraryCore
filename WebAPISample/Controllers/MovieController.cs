@@ -25,7 +25,7 @@ namespace WebAPISample.Controllers
             var movies = _context.Movies.ToList();
 
             // Retrieve all movies from db logic
-            //return Ok(new string[] { "movie1 string", "movie2 string" });
+       
             return Ok(movies);
         }
 
@@ -36,11 +36,8 @@ namespace WebAPISample.Controllers
             // Retrieve movie by id from db logic
 
             var movie = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
-            //if (movie == null)
-            //{
-            //    return NotFound();
-            //}
-         
+          
+
             return Ok(movie);
         }
 
@@ -61,10 +58,6 @@ namespace WebAPISample.Controllers
         public IActionResult Put(int id, [FromBody] Movie movie)
         {
 
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest("Not a valid model");
-            //}
 
             var movieInDb = _context.Movies.Where(m => m.MovieId == id).SingleOrDefault();
 
