@@ -67,22 +67,24 @@ $("#edit-button").on("click",
 
 function getMovie(e) {
     e.preventDefault();
-    console.log("button clicked");
     let search = $('#movieId').val();
 
     // let search = searchOption.toLowerCase();
-    console.log(search);
+
     //  let defaultSearch = ('select option:selected');
     $.get('https://localhost:44325/api/movie',
         function (data) {
 
-           search = String(search);
-           newSearch = search.toLowerCase();
+            search = String(search);
+            newSearch = search.toLowerCase();
+            var selectedProperty = document.getElementById('search-property').selectedIndex;
 
             let filterData = data.filter((movie) => {
-                if ((movie.title != null && movie.title.includes(newSearch)) || (movie.director != null && movie.director.includes(newSearch)) ||
-                (movie.genre != null && movie.genre.includes(newSearch))) {
-                    return true;
+                if(selectedProperty != 0){
+                    return propertyBasedSearch(movie, selectedProperty, newSearch);
+                }
+                else if (selectedProperty === 0) {
+                    return indiscriminateSearch(movie, newSearch);
                 } else {
                     return false;
                 }
@@ -109,4 +111,40 @@ function sendId(id){
         $('#movie-director').attr("value", data.director);
         $('#movie-genre').attr("value", data.genre);
     })  
+}
+
+
+function propertyBasedSearch(movie, selectedProperty, searchTerm){
+    let property = "";
+    switch(selectedProperty){
+        case 1:
+            property = "title";
+            break;
+        case 2:
+            property = "director";
+            break;
+        case 3:
+            property = "genre";
+            break;
+        default:
+            return false;
+    }
+
+    let movieProperty = movie[property].toLowerCase();
+    if (movieProperty != null && movieProperty.includes(searchTerm)){
+        return true;
+    }
+    return false;
+}
+
+function indiscriminateSearch(movie, searchTerm){
+    let movieTitle = movie.title.toLowerCase();        
+    let movieDirector = movie.director.toLowerCase();
+    let movieGenre = movie.genre.toLowerCase();
+    if((movieTitle != null && movieTitle.includes(searchTerm)) || 
+    (movieDirector != null && movieDirector.includes(searchTerm)) ||
+    (movieGenre != null && movieGenre.includes(searchTerm))){
+        return true;
+    }
+    return false;
 }
