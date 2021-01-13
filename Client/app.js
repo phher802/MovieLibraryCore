@@ -30,7 +30,7 @@
 
 $(document).ready($.get('https://localhost:44325/api/movie', function (data) {
     data.map(element => {
-        $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
+        $('#movie-table').append(`<tr><td class='title-click' id="${element.movieId}"><a href="#edit-form" onclick="sendId(${element.movieId})">${element.title}</a></td>
                 <td>${element.director}</td>
                 <td>${element.genre}</td></tr>`);
     });
@@ -91,7 +91,7 @@ function getMovie(e) {
             })
             $('#movie-table').html('');
             filterData.map(function(element) {
-                $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a onclick="sendId(${element.movieId})">${element.title}</a></td>
+                $('#movie-table').append(`<tr><td class ='title-click' id="${element.movieId}"><a href="#edit-form" onclick="sendId(${element.movieId})">${element.title}</a></td>
             <td>${element.director}</td>
             <td>${element.genre}</td>
             </tr>`);
@@ -103,8 +103,8 @@ $('#search-field').submit(getMovie);
 
 
 function sendId(id){
+    $(".edit-section").css("display", "inline");
     $.get("https://localhost:44325/api/movie/" +id, function(data){
-        $(".edit-section").css("display", "inline");
         $('#movie-id').attr("value", id);
         $('#movie-title-big').html(data.title);
         $('#movie-title').attr("value", data.title);

@@ -60,22 +60,20 @@
 <hr style="margin: 30px 15% 30px 15%;"/>
 
 
-<div class="section">
-    
-        <h2 id="movie-title-big" class="page-title section" style="text-align: left;"></h2>
+<div class="edit-section" style="display: none;">  
+    <h2 id="movie-title-big" class="page-title section" style="text-align: left;"></h2>
+
+    <form id="edit-form" class="text-form section">
         <h4>See inaccuracies? Feel free to submit an edit to Movie Library.</h4>
-        
         <p style="margin-bottom: 30px;">Edit this movie here</p>
-        <form id="edit-form" class="text-form">
-            <input type="hidden" id="movie-id" name="movieId"/>
-            <input type="text" id="movie-title" name="title" placeholder="Title" /><br />
-            <input type="text" id="movie-director" name="director" placeholder="Director" /><br />
-            <input type="text" id="movie-genre" name="genre" placeholder="Genre" /><br />
-
-            <button type="submit" class="submit" id="edit-button">Edit Movie</button>
-        </form>
         
+        <input type="hidden" id="movie-id" name="movieId"/>
+        <input type="text" id="movie-title" name="title" placeholder="Title" /><br />
+        <input type="text" id="movie-director" name="director" placeholder="Director" /><br />
+        <input type="text" id="movie-genre" name="genre" placeholder="Genre" /><br />
 
+        <button type="submit" class="submit" id="edit-button">Edit Movie</button>
+    </form>
 </div>
 
 
