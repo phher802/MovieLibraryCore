@@ -119,7 +119,7 @@ function sendId(id){
         $('#movie-image').attr("value", data.image);
         $('.image-section').attr("src", data.image);
     })  
-    if(data.image != "" && data.image != null){
+    if(String(data.image) == "" || String(data.image) == null){
         $(".image-section").css("display", "none"); 
     }
 }
